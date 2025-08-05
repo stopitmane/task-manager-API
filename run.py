@@ -11,9 +11,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 if __name__ == "__main__":
+    from app.main import get_port
+    
     uvicorn.run(
         "app.main:app",
         host=os.getenv("API_HOST", "0.0.0.0"),
-        port=int(os.getenv("API_PORT", 8001)),
+        port=get_port(),
         reload=os.getenv("DEBUG", "True").lower() == "true"
     ) 

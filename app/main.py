@@ -18,6 +18,12 @@ async def lifespan(app: FastAPI):
     create_tables()
     yield
 
+# Get port from environment variable
+def get_port():
+    """Get port from environment variable or default to 8000."""
+    import os
+    return int(os.getenv("PORT", 8000))
+
 # Create FastAPI app
 app = FastAPI(
     title="Task Management System API",
